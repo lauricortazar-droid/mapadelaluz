@@ -1,0 +1,10 @@
+{
+  "name": "Encuentra tu Grupo – Guerreros de la Luz",
+  "description": "Directorio interactivo y mapa de grupos de la Fraternidad Guerreros de la Luz (12 Pasos) en Mérida, Yucatán y municipios cercanos.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

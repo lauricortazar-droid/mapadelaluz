@@ -1,0 +1,47 @@
+{
+  "id": "/",
+  "name": "Guerreros de la Luz - Directorio de Grupos",
+  "short_name": "GDLL Grupos",
+  "description": "Directorio interactivo y mapa de grupos de la Fraternidad Guerreros de la Luz (12 Pasos).",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["lifestyle", "social", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Ver Mapa de Grupos",
+      "short_name": "Mapa",
+      "url": "/?view=map",
+      "description": "Explora grupos cercanos en el mapa interactivo"
+    },
+    {
+      "name": "Grupos Abiertos Hoy",
+      "short_name": "Hoy",
+      "url": "/?filter=today",
+      "description": "Consulta qué grupos sesionan el día de hoy"
+    }
+  ]
+}

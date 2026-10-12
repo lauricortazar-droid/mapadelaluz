@@ -1,0 +1,123 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email == 'gdll.agenda@gmail.com') ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidGroup(data) {
+      return (
+        ('nombre' in data && data.nombre is string) ||
+        ('name' in data && data.name is string)
+      );
+    }
+
+    function isValidProposal(data) {
+      return data.keys().hasAll(['id', 'groupName', 'senderName', 'senderPhone', 'status']) &&
+             data.id is string && data.id.size() <= 64 &&
+             data.groupName is string && data.groupName.size() <= 128 &&
+             data.senderName is string && data.senderName.size() <= 128 &&
+             data.senderPhone is string && data.senderPhone.size() <= 64 &&
+             data.status in ['pending', 'approved', 'rejected'];
+    }
+
+    function isValidContactMessage(data) {
+      return data.keys().hasAll(['id', 'name', 'phone', 'message']) &&
+             data.id is string && data.id.size() <= 64 &&
+             data.name is string && data.name.size() <= 128 &&
+             data.phone is string && data.phone.size() <= 64 &&
+             data.message is string && data.message.size() <= 1500;
+    }
+
+    function isValidConfig(data) {
+      return data.keys().hasAll(['id']) &&
+             data.id is string && data.id.size() <= 64;
+    }
+
+    function isValidUserProfile(data) {
+      return data.keys().hasAll(['uid', 'email']) &&
+             data.uid is string && data.uid.size() <= 128 &&
+             data.email is string && data.email.size() <= 128 &&
+             (!('role' in data) || data.role in ['user', 'admin']);
+    }
+
+    // Direct access to test collection for connection validation
+    match /test/{testId} {
+      allow get: if isValidId(testId);
+      allow list: if true;
+      allow write: if false;
+    }
+
+    // Public directory of groups (allow get with ID check, allow list for directory querying)
+    match /groups/{groupId} {
+      allow get: if isValidId(groupId);
+      allow list: if true; // Public listing for recovery fellowship groups
+      allow create, update: if isValidId(groupId) && (isAdmin() || isSignedIn()) && isValidGroup(incoming());
+      allow delete: if isValidId(groupId) && (isAdmin() || isSignedIn());
+    }
+
+    // Proposals submitted by group leaders/coordinators (public create, admin get/list/update/delete)
+    match /proposals/{proposalId} {
+      allow get: if isValidId(proposalId) && isAdmin();
+      allow list: if isAdmin();
+      allow create: if isValidId(proposalId) && isValidProposal(incoming());
+      allow update: if isValidId(proposalId) && isAdmin() && isValidProposal(incoming());
+      allow delete: if isValidId(proposalId) && isAdmin();
+    }
+
+    // Contact and help requests
+    match /contactMessages/{messageId} {
+      allow get: if isValidId(messageId) && isAdmin();
+      allow list: if isAdmin();
+      allow create: if isValidId(messageId) && isValidContactMessage(incoming());
+      allow update, delete: if isValidId(messageId) && isAdmin();
+    }
+
+    // Custom text configurations
+    match /config/{configId} {
+      allow get: if isValidId(configId);
+      allow list: if true;
+      allow write: if isValidId(configId) && isAdmin() && isValidConfig(incoming());
+    }
+
+    // User profiles & permissions
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow create, update: if isValidId(userId) && isSignedIn() && (request.auth.uid == userId || isAdmin()) && isValidUserProfile(incoming());
+      allow delete: if isValidId(userId) && isAdmin();
+    }
+
+    // Admins list
+    match /admins/{adminId} {
+      allow get: if isSignedIn() && (request.auth.uid == adminId || isAdmin());
+      allow list: if isAdmin();
+      allow write: if false;
+    }
+  }
+}

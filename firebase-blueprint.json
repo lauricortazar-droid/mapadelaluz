@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "group": {
+      "title": "Group",
+      "description": "Information about a 12-step support group",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 128 },
+        "zone": { "type": "string", "maxLength": 64 },
+        "address": { "type": "string", "maxLength": 256 },
+        "colonia": { "type": "string", "maxLength": 128 },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name", "zone", "address"]
+    },
+    "proposal": {
+      "title": "LeaderProposal",
+      "description": "Proposal submitted by group leaders or members to update group details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "groupId": { "type": "string", "maxLength": 64 },
+        "groupName": { "type": "string", "maxLength": 128 },
+        "senderName": { "type": "string", "maxLength": 128 },
+        "senderPhone": { "type": "string", "maxLength": 64 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"], "maxLength": 32 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "groupName", "senderName", "senderPhone", "status"]
+    },
+    "contactMessage": {
+      "title": "ContactMessage",
+      "description": "Help request or general contact inquiry from users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 128 },
+        "phone": { "type": "string", "maxLength": 64 },
+        "message": { "type": "string", "maxLength": 1500 },
+        "groupId": { "type": "string", "maxLength": 64 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name", "phone", "message"]
+    },
+    "appConfig": {
+      "title": "AppConfig",
+      "description": "Global custom texts and directory settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "welcomeTitle": { "type": "string", "maxLength": 256 },
+        "welcomeSubtitle": { "type": "string", "maxLength": 512 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id"]
+    },
+    "userProfile": {
+      "title": "UserProfile",
+      "description": "User profile with optional admin role",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "enum": ["user", "admin"], "maxLength": 32 }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/groups/{groupId}": {
+      "schema": "group",
+      "description": "Directorio de grupos fraternales de 12 pasos"
+    },
+    "/proposals/{proposalId}": {
+      "schema": "proposal",
+      "description": "Propuestas de cambio enviadas por los servidores y líderes"
+    },
+    "/contactMessages/{messageId}": {
+      "schema": "contactMessage",
+      "description": "Mensajes y solicitudes de ayuda de los usuarios"
+    },
+    "/config/{configId}": {
+      "schema": "appConfig",
+      "description": "Personalizaciones y configuración general de la aplicación"
+    },
+    "/users/{userId}": {
+      "schema": "userProfile",
+      "description": "Perfiles de usuarios y roles"
+    }
+  }
+}

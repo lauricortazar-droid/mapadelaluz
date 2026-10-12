@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" fill="none">
+  <defs>
+    <radialGradient id="goldPlate" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#eab308" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#ca8a04" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="goldBevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" />
+      <stop offset="25%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#d97706" />
+      <stop offset="75%" stop-color="#ca8a04" />
+      <stop offset="100%" stop-color="#78350f" />
+    </linearGradient>
+    <linearGradient id="goldTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" />
+      <stop offset="40%" stop-color="#facc15" />
+      <stop offset="80%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#78350f" />
+    </linearGradient>
+    <linearGradient id="shieldGoldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#78350f" />
+    </linearGradient>
+    <linearGradient id="blueMedallionGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="goldDrop" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.4" />
+    </filter>
+    <filter id="shieldShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.5" />
+    </filter>
+    <path id="arcTopText" d="M 68,300 A 232,232 0 1,1 532,300" fill="none" />
+    <path id="arcBottomText" d="M 532,300 A 232,232 0 0,1 68,300" fill="none" />
+  </defs>
+
+  <circle cx="300" cy="300" r="280" fill="url(#goldPlate)" />
+
+  <!-- Geometría sagrada / Flor de la vida -->
+  <g stroke="#ca8a04" stroke-width="1.2" stroke-opacity="0.45" fill="none">
+    <circle cx="300" cy="300" r="185" stroke-width="1.8" />
+    <circle cx="300" cy="300" r="120" />
+    <circle cx="300" cy="300" r="60" />
+    <circle cx="300" cy="240" r="60" />
+    <circle cx="352" cy="270" r="60" />
+    <circle cx="352" cy="330" r="60" />
+    <circle cx="300" cy="360" r="60" />
+    <circle cx="248" cy="330" r="60" />
+    <circle cx="248" cy="270" r="60" />
+    <circle cx="300" cy="180" r="120" />
+    <circle cx="404" cy="240" r="120" />
+    <circle cx="404" cy="360" r="120" />
+    <circle cx="300" cy="420" r="120" />
+    <circle cx="196" cy="360" r="120" />
+    <circle cx="196" cy="240" r="120" />
+  </g>
+
+  <!-- Aro exterior grabado en oro -->
+  <g filter="url(#goldDrop)">
+    <circle cx="300" cy="300" r="282" stroke="url(#goldBevel)" stroke-width="4" />
+    <circle cx="300" cy="300" r="275" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="3 3" />
+    <circle cx="300" cy="300" r="248" stroke="url(#goldBevel)" stroke-width="32" fill="none" opacity="0.12" />
+    <circle cx="300" cy="300" r="264" stroke="#ca8a04" stroke-width="1.5" fill="none" />
+    <circle cx="300" cy="300" r="232" stroke="#ca8a04" stroke-width="2" fill="none" />
+    <circle cx="300" cy="300" r="226" stroke="#eab308" stroke-width="1" stroke-dasharray="2 2" fill="none" />
+
+    <!-- Nudos heráldicos -->
+    <g transform="translate(68, 300)">
+      <path d="M -10,-8 C -18,-14 -18,14 -10,8 C -4,3 4,3 10,8 C 18,14 18,-14 10,-8 C 4,-3 -4,-3 -10,-8 Z" fill="none" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="3" fill="#ca8a04" />
+    </g>
+    <g transform="translate(532, 300)">
+      <path d="M -10,-8 C -18,-14 -18,14 -10,8 C -4,3 4,3 10,8 C 18,14 18,-14 10,-8 C 4,-3 -4,-3 -10,-8 Z" fill="none" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="3" fill="#ca8a04" />
+    </g>
+
+    <!-- Texto superior e inferior -->
+    <text fill="url(#goldTextGrad)" font-family="'Cinzel', 'Times New Roman', serif" font-size="24" font-weight="bold" letter-spacing="5">
+      <textPath href="#arcTopText" startOffset="50%" text-anchor="middle">
+        FRATERNIDAD DE LA LUZ
+      </textPath>
+    </text>
+    <text fill="url(#goldTextGrad)" font-family="'Cinzel', 'Times New Roman', serif" font-size="20" font-weight="bold" letter-spacing="4">
+      <textPath href="#arcBottomText" startOffset="50%" text-anchor="middle">
+        POR EL HONOR DE SERVIR VIVIMOS
+      </textPath>
+    </text>
+  </g>
+
+  <!-- Medallones radiales de las zonas -->
+  <g filter="url(#goldDrop)">
+    <g transform="translate(300, 192)">
+      <circle cx="0" cy="0" r="22" fill="#18181b" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="6" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="15" font-weight="bold">D</text>
+    </g>
+    <g transform="translate(390, 204)">
+      <circle cx="0" cy="0" r="22" fill="#334155" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="5" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="11" font-weight="bold">CSG</text>
+    </g>
+    <g transform="translate(442, 260)">
+      <circle cx="0" cy="0" r="22" fill="#475569" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="5" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="11" font-weight="bold">TC</text>
+    </g>
+    <g transform="translate(450, 326)">
+      <circle cx="0" cy="0" r="22" fill="#0284c7" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="6" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="14" font-weight="bold">D</text>
+    </g>
+    <g transform="translate(440, 392)">
+      <circle cx="0" cy="0" r="22" fill="#86198f" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <path d="M 0,8 L 0,-3 M -7,-9 C -12,-3 -5,5 0,7 C 5,5 12,-3 7,-9 C 3,-13 -3,-13 -7,-9 Z" fill="#ffffff" />
+    </g>
+    <g transform="translate(390, 442)">
+      <circle cx="0" cy="0" r="22" fill="#09090b" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <path d="M 0,8 L 0,-3 M -7,-9 C -12,-3 -5,5 0,7 C 5,5 12,-3 7,-9 C 3,-13 -3,-13 -7,-9 Z" fill="#ffffff" />
+    </g>
+    <g transform="translate(348, 474)">
+      <circle cx="0" cy="0" r="20" fill="#0284c7" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <path d="M 0,6 L 0,-2 M -6,-7 C -10,-2 -4,4 0,6 C 4,4 10,-2 6,-7 C 2,-11 -2,-11 -6,-7 Z" fill="#ffffff" />
+    </g>
+    <g transform="translate(300, 468)">
+      <circle cx="0" cy="0" r="22" fill="#c2410c" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="6" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="13" font-weight="bold">TL</text>
+    </g>
+    <g transform="translate(252, 474)">
+      <circle cx="0" cy="0" r="20" fill="#059669" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <path d="M 0,6 L 0,-2 M -6,-7 C -10,-2 -4,4 0,6 C 4,4 10,-2 6,-7 C 2,-11 -2,-11 -6,-7 Z" fill="#ffffff" />
+    </g>
+    <g transform="translate(204, 442)">
+      <circle cx="0" cy="0" r="22" fill="#dc2626" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <path d="M 0,4 Q -6,-3 -11,1 Q -7,-8 0,-6 Q 7,-8 11,1 Q 6,-3 0,4 Z" fill="#fde047" />
+    </g>
+    <g transform="translate(160, 392)">
+      <circle cx="0" cy="0" r="22" fill="#f43f5e" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <path d="M 0,8 L 0,-3 M -7,-9 C -12,-3 -5,5 0,7 C 5,5 12,-3 7,-9 C 3,-13 -3,-13 -7,-9 Z" fill="#ffffff" />
+    </g>
+    <g transform="translate(150, 326)">
+      <circle cx="0" cy="0" r="22" fill="#65a30d" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="6" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="13" font-weight="bold">D</text>
+    </g>
+    <g transform="translate(160, 260)">
+      <circle cx="0" cy="0" r="22" fill="#78350f" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="6" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="13" font-weight="bold">PL</text>
+    </g>
+    <g transform="translate(204, 204)">
+      <circle cx="0" cy="0" r="22" fill="#ea580c" stroke="url(#goldBevel)" stroke-width="2.5" />
+      <text x="0" y="6" text-anchor="middle" fill="#ffffff" font-family="serif" font-size="14" font-weight="bold">J</text>
+    </g>
+  </g>
+
+  <!-- Escudo Central -->
+  <g filter="url(#shieldShadow)">
+    <path d="M 235,230 C 235,230 300,218 365,230 C 365,335 348,390 300,432 C 252,390 235,335 235,230 Z" fill="#ffffff" stroke="url(#shieldGoldRim)" stroke-width="8" stroke-linejoin="round" />
+    <path d="M 240,235 C 240,235 300,225 360,235 L 360,274 C 330,270 270,270 240,274 Z" fill="#64748b" stroke="url(#goldBevel)" stroke-width="2" />
+    <text x="300" y="253" text-anchor="middle" fill="#ffffff" font-family="'Cinzel', serif" font-size="12.5" font-weight="bold" letter-spacing="0.8">GUERREROS</text>
+    <text x="300" y="267" text-anchor="middle" fill="#fef08a" font-family="'Cinzel', serif" font-size="9.5" font-weight="600" letter-spacing="1">DE LA LUZ</text>
+    <text x="263" y="312" text-anchor="middle" fill="#0f172a" font-family="'Cinzel', serif" font-size="26" font-weight="bold">A</text>
+    <path d="M 300,288 C 298,282 302,282 300,288 C 296,286 295,291 298,293 C 296,295 300,296 300,298 C 300,296 304,295 302,293 C 305,291 304,286 300,288 Z" fill="#d97706" />
+    <text x="337" y="312" text-anchor="middle" fill="#0f172a" font-family="'Cinzel', serif" font-size="26" font-weight="bold">C</text>
+    <circle cx="300" cy="358" r="33" fill="url(#blueMedallionGrad)" stroke="url(#goldBevel)" stroke-width="3" />
+    <circle cx="300" cy="358" r="28" stroke="#ffffff" stroke-width="1.2" fill="none" />
+    <polygon points="300,336 276,375 324,375" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" />
+    <g transform="translate(300, 357) scale(0.95)">
+      <path d="M 0,-6 C -4,-12 -12,-8 -9,-2 C -11,-1 -13,3 -15,7 C -10,6 -5,3 -2,1 C -3,5 -4,9 -4,13 C 0,9 4,4 5,0 C 9,3 13,6 16,8 C 14,4 12,0 9,-2 C 12,-6 6,-11 0,-6 Z" fill="#ffffff" />
+    </g>
+  </g>
+</svg>
